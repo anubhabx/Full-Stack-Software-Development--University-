@@ -1,0 +1,327 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+input {
+  outline: none;
+  border: 1.5px solid black;
+  padding: 4px 8px;
+  border-radius: 1px;
+  width: 100%;
+}
+
+body {
+  font-family: Helvetica, sans-serif, sans-serif;
+  background-color: #e2e5ef;
+}
+
+header {
+  background-color: #415e9b;
+  color: white;
+  padding: 0px 10%;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: #1f4c8a;
+}
+
+.header_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: min-content;
+  width: 100%;
+}
+
+.header_banner_mobile {
+  display: none;
+}
+
+.logo img {
+  width: clamp(50px, 40%, 300px);
+}
+
+.header_form {
+  width: 100%;
+  max-width: 40%;
+}
+
+.header_form form {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.header_form form div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.header_form form label,
+.header_form form p {
+  font-size: 0.8rem;
+}
+
+.forgot_password {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.header_form form button {
+  background-color: #4267b2;
+  font-weight: bold;
+  color: white;
+  width: max-content;
+  padding: 4px 12px;
+  align-self: center;
+  border-radius: 2px;
+  border: 1px solid #28477b;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14%;
+  height: 100%;
+  width: 100%;
+  padding: 24px 10%;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 32px;
+}
+
+.left h2 {
+  font-size: 1.5rem;
+  color: #01315c;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 40%;
+  width: 100%;
+}
+
+.heading_text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.right h1 {
+  font-size: 2rem;
+  color: #323232;
+}
+
+.right form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.data_form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.data_form div {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+}
+
+.data_form input {
+  padding: 8px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.birthday,
+.gender {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.birthday h3,
+.gender h3 {
+  color: #8f96a1;
+  font-size: 1rem;
+}
+
+.birthday_select {
+  display: flex;
+  gap: 1px;
+}
+
+.birthday_select select {
+  padding: 4px;
+  border: 1px solid #ccc;
+}
+
+.gender_select {
+  display: flex;
+}
+
+.gender div {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+  width: max-content;
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.right button {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  width: max-content;
+  background: linear-gradient(to bottom, #68ad55, #53823e);
+  padding: 12px 64px;
+  border: 1px solid #3c6f24;
+  border-radius: 4px;
+  box-shadow: inset 0px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+main .mobile {
+  display: none;
+}
+
+.mobile > * {
+  width: 100%;
+}
+
+.lang_select {
+  align-self: center;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.mobile_form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile_form input {
+  padding: 8px 4px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  background-color: transparent;
+  font-size: 1rem;
+}
+
+.mobile_form button {
+  background-color: #226fdc;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  width: 100%;
+  padding: 12px 12px;
+  align-self: center;
+  border-radius: 4px;
+  border: 1px solid #28477b;
+}
+
+.mobile_form .forgot_password {
+  color: #226fdc;
+  font-size: 0.8rem;
+  align-self: center;
+  font-weight: bold;
+}
+
+.mobile .divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 24px 0px;
+}
+
+.mobile .divider hr {
+  width: 100%;
+}
+
+.mobile .divider span {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.mobile .create_account {
+  width: max-content;
+  padding: 8px 24px;
+  font-size: 0.8rem;
+  background-color: #32a24c;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    background-color: #fff;
+  }
+
+  header {
+    padding: 0px;
+  }
+
+  .header_container {
+    display: none;
+  }
+
+  .header_banner_mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+  }
+
+  header .header_banner_mobile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  main .left,
+  main .right {
+    display: none;
+  }
+
+  main {
+    padding: 12px 10%;
+  }
+
+  main .mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+  }
+}
