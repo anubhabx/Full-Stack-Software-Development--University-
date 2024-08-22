@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confusing Tables</title>
+    <style>
+      .outer-table {
+        height: 90vh;
+        width: 100vh;
+      }
+      .nested-table-container {
+        height: 100%;
+      }
+      .nested-table {
+        width: 90%;
+        height: 90%;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <table border="2px" cellpadding="20" class="outer-table">
+        <tr>
+          <td>A</td>
+          <td rowspan="2">C</td>
+          <td rowspan="2" colspan="2">
+            <div class="nested-table-container">
+              <table border="2px" class="nested-table">
+                <tr>
+                  <td>K</td>
+                  <td rowspan="2">L</td>
+                </tr>
+                <tr>
+                  <td>M</td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>B</td>
+        </tr>
+        <tr>
+          <td colspan="2">D</td>
+          <td rowspan="3">H</td>
+          <td>J</td>
+        </tr>
+        <tr>
+          <td>E</td>
+          <td rowspan="2">G</td>
+          <td rowspan="2">I</td>
+        </tr>
+        <tr>
+          <td>F</td>
+        </tr>
+      </table>
+    </center>
+  </body>
+</html>
