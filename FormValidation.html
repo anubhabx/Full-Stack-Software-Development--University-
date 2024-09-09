@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: #ff0000;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <form id="myForm">
+        <h2>Sign Up</h2>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+            <span id="emailError" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+            <span id="usernameError" class="error"></span>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+            <span id="passwordError" class="error"></span>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            validateForm();
+        });
+
+        function validateForm() {
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            let isValid = true;
+
+            // Email validation
+            if (email === '') {
+                showError('emailError', 'Email cannot be empty');
+                isValid = false;
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { // Regular expression for email validation. Checks for @, ., and minimum 2 characters after the last dot.
+                showError('emailError', 'Invalid email format');
+                isValid = false;
+            } else {
+                showError('emailError', '');
+            }
+
+            // Username validation
+            if (username === '') {
+                showError('usernameError', 'Username cannot be empty');
+                isValid = false;
+            } else {
+                showError('usernameError', '');
+            }
+
+            // Password validation
+            if (password === '') {
+                showError('passwordError', 'Password cannot be empty');
+                isValid = false;
+            } else if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(password)) {
+                showError('passwordError', 'Password must have at least 8 characters with 1 uppercase, 1 lowercase, 1 special character, and 1 digit');
+                isValid = false;
+            } else {
+                showError('passwordError', '');
+            }
+
+            if (isValid) {
+                alert('Form submitted successfully!');
+            }
+        }
+
+        function showError(elementId, message) {
+            document.getElementById(elementId).textContent = message;
+        }
+    </script>
+</body>
+</html>

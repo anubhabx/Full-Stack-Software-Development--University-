@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Tally Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .counter {
+            margin-bottom: 20px;
+        }
+        .info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enhanced Tally Counter</h1>
+    
+    <div class="counter">
+        <h2>Manual Counter</h2>
+        <div id="manualCount">0</div>
+        <button id="increment">+</button>
+        <button id="decrement">-</button>
+        <button id="reset">Reset</button>
+    </div>
+
+    <div class="info">
+        <h2>Event Counters</h2>
+        <p>Total Clicks: <span id="clickCount">0</span></p>
+        <p>Key Presses: <span id="keyPressCount">0</span></p>
+        <p>Mouse Position: <span id="mousePosition">0, 0</span></p>
+        <p>Last Key Pressed: <span id="lastKeyPressed">None</span></p>
+        <p>Last Click Position: <span id="lastClickPosition">None</span></p>
+    </div>
+
+    <script>
+        // Manual counter
+        const manualCountDisplay = document.getElementById('manualCount');
+        const incrementBtn = document.getElementById('increment');
+        const decrementBtn = document.getElementById('decrement');
+        const resetBtn = document.getElementById('reset');
+
+        let manualCount = 0;
+
+        function updateManualDisplay() {
+            manualCountDisplay.textContent = manualCount;
+        }
+
+        incrementBtn.addEventListener('click', () => {
+            manualCount++;
+            updateManualDisplay();
+        });
+
+        decrementBtn.addEventListener('click', () => {
+            if (manualCount > 0) {
+                manualCount--;
+                updateManualDisplay();
+            }
+        });
+
+        resetBtn.addEventListener('click', () => {
+            manualCount = 0;
+            updateManualDisplay();
+        });
+
+        // Click counter and last click position
+        const clickCountDisplay = document.getElementById('clickCount');
+        const lastClickPositionDisplay = document.getElementById('lastClickPosition');
+        let clickCount = 0;
+
+        document.addEventListener('click', (event) => {
+            clickCount++;
+            clickCountDisplay.textContent = clickCount;
+            lastClickPositionDisplay.textContent = `${event.clientX}, ${event.clientY}`;
+        });
+
+        // Key press counter and last key pressed
+        const keyPressCountDisplay = document.getElementById('keyPressCount');
+        const lastKeyPressedDisplay = document.getElementById('lastKeyPressed');
+        let keyPressCount = 0;
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key.length === 1) {  // Only count single-character keys
+                keyPressCount++;
+                keyPressCountDisplay.textContent = keyPressCount;
+                lastKeyPressedDisplay.textContent = event.key;
+            } else {
+                lastKeyPressedDisplay.textContent = event.code;
+            }
+        });
+
+        // Mouse position tracker
+        const mousePositionDisplay = document.getElementById('mousePosition');
+
+        document.addEventListener('mousemove', (event) => {
+            const x = event.clientX;
+            const y = event.clientY;
+            mousePositionDisplay.textContent = `${x}, ${y}`;
+        });
+    </script>
+</body>
+</html>
