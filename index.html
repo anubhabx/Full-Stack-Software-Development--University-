@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beginner Demo: this, call(), apply(), bind()</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .output {
+            margin-top: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+
+        button {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Understanding <code>this</code>, <code>call()</code>, <code>apply()</code>, and <code>bind()</code></h2>
+
+    <div class="input-group">
+        <label for="nameInput">Name:</label>
+        <input type="text" id="nameInput" placeholder="Enter name">
+    </div>
+
+    <div class="input-group">
+        <label for="ageInput">Age:</label>
+        <input type="number" id="ageInput" placeholder="Enter age">
+    </div>
+
+    <div class="input-group">
+        <label for="cityInput">City:</label>
+        <input type="text" id="cityInput" placeholder="Enter city">
+    </div>
+
+    <button id="callButton">Use call()</button>
+    <button id="applyButton">Use apply()</button>
+    <button id="bindButton">Use bind()</button>
+
+    <div class="output" id="output"></div>
+
+    <script>
+        const person = {
+            name: "Alice",
+            greet: function (age, city) {
+                return `Hello, my name is ${this.name}, I am ${age} years old and I live in ${city}.`;
+            }
+        };
+
+        const anotherPerson = {
+            name: "Bob"
+        };
+
+        function displayOutput(text) {
+            document.getElementById('output').textContent = text;
+        }
+
+        function getInputValues() {
+            const name = document.getElementById('nameInput').value || "Default Name";
+            const age = document.getElementById('ageInput').value || 25;
+            const city = document.getElementById('cityInput').value || "Default City";
+            return {name, age, city};
+        }
+
+        document.getElementById('callButton').addEventListener('click', function () {
+            const {name, age, city} = getInputValues();
+            const result = person.greet.call({name: name}, age, city);
+            displayOutput(`Using call(): ${result}`);
+        });
+
+        document.getElementById('applyButton').addEventListener('click', function () {
+            const {name, age, city} = getInputValues();
+            const result = person.greet.apply({name: name}, [age, city]);
+            displayOutput(`Using apply(): ${result}`);
+        });
+
+        document.getElementById('bindButton').addEventListener('click', function () {
+            const {name, age, city} = getInputValues();
+            const boundGreet = person.greet.bind({name: name});
+            const result = boundGreet(age, city);
+            displayOutput(`Using bind(): ${result}`);
+        });
+    </script>
+</body>
+
+</html>
